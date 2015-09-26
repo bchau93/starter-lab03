@@ -42,7 +42,8 @@ $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 $route['sleep'] = 'first/zzz';
 $route['lock/.*'] = 'welcome/shucks';
-$route['show/:num'] = 'first/gimmie/$1';
+$route['show/(:num)'] = 'first/gimmie/$1';
+$route['dunno'] = 'guess';
 
 
 /* End of file routes.php */

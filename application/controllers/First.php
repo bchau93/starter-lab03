@@ -31,4 +31,12 @@ class First extends Application {
         $this->data = array_merge($this->data, $source);
         $this->render();
     }
+    
+    function gimmie($number) {
+        $this->data['pagebody'] = 'justone';    // this is the view we want shown
+        // build the list of authors, to pass on to our view
+        $source = $this->quotes->get(3);
+        $this->data = array_merge($this->data, $source);
+        $this->render();
+    }
 }

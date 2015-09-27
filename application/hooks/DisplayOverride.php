@@ -8,22 +8,6 @@
 
 class DisplayOverride  {
     
-   function boldFirst($str){
-       $newWord = '';
-       // For each letter in $str, if there is an upper case letter, Bold it.
-       for($x = 0; $x < strlen($str); ++$x){                
-            if(ctype_upper($str[$x])){
-                $newWord = "<strong>" . $str[$x] . "</strong>";
-                continue;                  
-            }else{
-                $newWord .= $str[$x];
-                continue;
-            }              
-        }
-        // return new word.
-        return $newWord;
-   }
-   
    // Bolds all capital letters that appear inside a paragraph tag with the Lead Attribute
    function OverrideDisplay(){
        $CI =& get_instance();
@@ -39,12 +23,15 @@ class DisplayOverride  {
             //Replace the lead tag with empty string for first word in quote
             $quote[1] = preg_replace('/(class="lead">)/', '', $quote[1]);
             /*
-             * For each word in $quote array, call the boldFirst function to
-             * bold each capital letter 
+             * For each word in $quote array, if the word begins with a capital
+             * letter, bold it.
              */
             for($i = 0; $i < count($quote); ++$i){     
                 $word = $quote[$i];
-                $quote[$i] = self::boldFirst($word);
+                if(ctype_upper($word[0])){
+                    $word = "<strong>" . $word . "</strong>";
+                }
+                $quote[$i] = $word;
             }
             //Add the lead attribute back to first word in quote
             $quote[1] = 'class="lead">' . $quote[1]; 

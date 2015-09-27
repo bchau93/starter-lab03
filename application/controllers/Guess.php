@@ -18,6 +18,7 @@ class Guess extends Application {
 
     function index() {
         $this->data['pagebody'] = 'justone';    // this is the view we want shown
+        //gets quote with id 4
         $source = $this->quotes->get(4);
         $this->data = array_merge($this->data, $source);
         $this->render();

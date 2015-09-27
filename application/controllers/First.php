@@ -27,6 +27,7 @@ class First extends Application {
     function zzz() {
         $this->data['pagebody'] = 'justone';    // this is the view we want shown
         // build the list of authors, to pass on to our view
+        //Gets quote with id 1
         $source = $this->quotes->get(1);
         $this->data = array_merge($this->data, $source);
         $this->render();
@@ -35,6 +36,7 @@ class First extends Application {
     function gimmie($number) {
         $this->data['pagebody'] = 'justone';    // this is the view we want shown
         // build the list of authors, to pass on to our view
+        //Gets quote on number passed in url
         $source = $this->quotes->get($number);
         $this->data = array_merge($this->data, $source);
         $this->render();
